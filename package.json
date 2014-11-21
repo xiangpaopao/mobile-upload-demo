@@ -1,0 +1,14 @@
+{
+    "name":"examples",
+    "version":"0.0.1",
+    "dependencies":{
+        "express":"4.10.x",
+        "body-parser":"*",
+        "connect-busboy": "0.0.1",
+        "utility": "1.0.0",
+        "gm":"*",
+        "swig":"*",
+        "utility":"*",
+        "body-parser":"*"
+    }
+}
