@@ -1,6 +1,6 @@
 (function( $ ){
     var options = {
-        server : '/upload-fix'
+        server : '/upload-origin'
     }
     var $wrap = $('#uploader'),
         $queue =  $wrap.find( '.filelist' ),
@@ -32,9 +32,6 @@
             data: form,
             contentType: false,
             processData: false,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("pragma", "no-cache");
-            },
             xhr: function () {
                 var xhr = new window.XMLHttpRequest();
                 xhr.upload.addEventListener("progress", updateProgress, false);

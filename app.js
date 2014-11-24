@@ -43,23 +43,23 @@ app.post('/upload', function(req, res) {
         //非安卓
         req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
             console.log(fieldname,filename);
-
-            file.on('end', function () {
-                res.json({
-                    success: true,
-                    thumbUrl:fileUrl
-                });
-            });
             file.pipe(fs.createWriteStream(filePath));
+        });
+        req.busboy.on('finish', function() {
+            res.json({
+                success: true,
+                thumbUrl:fileUrl
+            });
         });
         req.pipe(req.busboy);
     }else{
+        //安卓中采用拼接buffer的方式
         var imagedata = '';
         req.setEncoding('binary');
         req.on('data', function (chunk) {
             imagedata += chunk
         });
-        req.on('end', function (chunk) {
+        req.on('end', function () {
             fs.writeFile(filePath, imagedata, 'binary', function(err){
                 if (err) throw err
                 console.log('File saved.');
@@ -72,7 +72,7 @@ app.post('/upload', function(req, res) {
     }
 });
 
-app.post('/upload-fix', function(req, res) {
+app.post('/upload-origin', function(req, res) {
     req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
         var extension;
         switch (mimetype){
@@ -114,8 +114,8 @@ app.post('/upload-fix', function(req, res) {
 
 app.get('/', function (req, res) {
     var html = [
-        '<p>手机传图--前端修正 <a href="/front">Go</a></p>',
-        '<p>手机传图--后端修正 <a href="/back">Go</a></p>'
+        '<p>手机传图--前端处理后上传 <a href="/front">Go</a></p>',
+        '<p>手机传图--直接上传 <a href="/back">Go</a></p>'
     ].join('');
     res.send(html);
 });

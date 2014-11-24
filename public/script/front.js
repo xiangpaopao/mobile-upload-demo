@@ -57,8 +57,6 @@
             contentType: false,
             processData: false,
             beforeSend: function (xhr) {
-                console.log(xhr);
-                xhr.setRequestHeader("pragma", "no-cache");
                 if($.os.android) xhr.overrideMimeType('application/octet-stream');
             },
             xhr: function () {
@@ -68,13 +66,13 @@
             }
         }).done(function (res) {
             //渲染缩略图
+            if(!$.isPlainObject(res)) res = $.parseJSON(res);
             if (res.success) {
                 var imgUrl = res.thumbUrl;
                 var temp = '<img src="' + imgUrl + '" alt="">';
                 $elem.find('.imgWrap').append(temp);
                 $filePickerInput.val('');
             }
-
         }).fail(function () {
             alert('服务器故障，上传失败');
         }).always(function () {
@@ -83,13 +81,11 @@
     }
 
     function updateProgress(e) {
-        console.log(e)
         if (e.lengthComputable) {
             var loaded = Math.ceil((e.loaded / e.total) * 100);
             var spans = $progress.children();
             spans.eq( 0 ).text(loaded + '%' );
             spans.eq( 1 ).css( 'width',loaded + '%' );
-
             if(loaded == 100){
                 spans.eq( 0 ).text( '0%' );
                 spans.eq( 1 ).css( 'width', '0%' );

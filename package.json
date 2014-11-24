@@ -8,7 +8,6 @@
         "utility": "1.0.0",
         "gm":"*",
         "swig":"*",
-        "utility":"*",
-        "body-parser":"*"
+        "utility":"*"
     }
 }

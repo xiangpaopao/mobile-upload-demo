@@ -1,4 +1,1 @@
-mobile-upload-demo
-==================
-
-手机传图Demo
+#sn-upload-img
