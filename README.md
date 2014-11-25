@@ -1,1 +1,1 @@
-#sn-upload-img
+见  https://github.com/xiangpaopao/blog/issues/7

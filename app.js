@@ -126,6 +126,4 @@ app.get('/back', function (req, res) {
     res.render('back');
 });
 
-app.listen(3001,function(){
-    console.log('star with 3001');
-});
+app.listen(3001);

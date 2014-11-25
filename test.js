@@ -3,11 +3,11 @@
 //
 //var upload_path = path.join(__dirname, 'public/uploads/');
 //
-//im.readMetadata(path.join(upload_path, 'll.jpg'), function(err, metadata){
+//im.readMetadata(path.join(upload_path, 'll.jpeg'), function(err, metadata){
 //    if (err) throw err;
 //    console.log('Shot at '+metadata.exif.orientation);
 //})
-//
+
 //im.resize({
 //    srcPath: path.join(upload_path, 'll.jpg'),
 //    dstPath: path.join(upload_path, '222.jpg'),
@@ -23,10 +23,9 @@
 //var upload_path = path.join(__dirname, 'public/uploads/');
 //
 //gm(path.join(upload_path, 'll.jpg'))
-//    .noProfile()
-//    .autoOrient()
 //    .thumbnail(350, 350)
 //    .write(path.join(upload_path, '222.jpg'), function(err){
+//
 //        if (err) return console.dir(arguments)
 //        console.log(this.outname + " created  ::  " + arguments[3])
 //    }
